@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturas - Educación Inclusiva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #3a5683;
+            --accent-color: #ff7e5f;
+            --accent-color-2: #feb47b;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            background-attachment: fixed;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(132,250,176,0.3) 0%, rgba(143,211,244,0.3) 100%);
+            z-index: 0;
+        }
+        
+        header h1 {
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .active {
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            min-height: calc(100vh - 250px);
+        }
+        
+        .content {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-color-2));
+            border-radius: 5px;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.8;
+        }
+        
+        .intro-section {
+            margin: 2rem 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .reading-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .reading-link {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .reading-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .reading-link img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .reading-link:hover img {
+            transform: scale(1.05);
+        }
+        
+        .reading-link h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding-left: 0;
+        }
+        
+        .reading-link h2::before {
+            display: none;
+        }
+        
+        .reading-link p {
+            color: var(--text-color);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .highlight-box::before {
+            content: "\201C";
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 150px;
+            font-family: Georgia, serif;
+            color: rgba(255,255,255,0.1);
+        }
+        
+        .highlight-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .reading-links {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content > * {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .content > *:nth-child(2) { animation-delay: 0.1s; }
+        .content > *:nth-child(3) { animation-delay: 0.2s; }
+        .content > *:nth-child(4) { animation-delay: 0.3s; }
+        .content > *:nth-child(5) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Educación Inclusiva</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Introducción</a></li>
+            <li><a href="diario.html">Diario Reflexivo</a></li>
+            <li><a href="martes.html">Martes Inclusivos</a></li>
+            <li><a href="lecturas.html" class="active">Lecturas</a></li>
+            <li><a href="videos.html">Vídeos</a></li>
+            <li><a href="sobre-mi.html">Sobre Mí</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="content">
+            <h1>Lecturas</h1>
+            
+            <div class="intro-section">
+                <h2>Mi Experiencia con las Lecturas</h2>
+                <p>El trabajo de las lecturas me ha resultado interesante y muy rico en reflexiones acerca de la inclusión en la educación y la buena educación en general.</p>
+                
+                <p>Me han hecho aprender mucho y leer acerca de diferentes situaciones, siendo yo una persona que detestaba leer desde bien pequeña.</p>
+                
+                <p>He elegido estos libros prejuzgando un poco por sus nombres, consideraba que tenían algo que me llamaba la atención y efectivamente, han conseguido conquistarme y engancharme a ellos de forma que los he disfrutado muchísimo.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <p class="highlight-text">La lectura es una herramienta fundamental para comprender la diversidad y la inclusión en la educación. A través de estas obras, he podido explorar diferentes perspectivas y profundizar en mi comprensión de la educación inclusiva.</p>
+            </div>
+            
+            <div class="reading-links">
+                <a href="lecturas-1-cuatrimestre.html" class="reading-link">
+                    <img src="libro2-2.jpeg" alt="Portada Hay un chico en el baño de las chicas">
+                    <h2>Lecturas 1º Cuatrimestre</h2>
+                    <p>Explora mis reflexiones sobre las lecturas realizadas durante el primer cuatrimestre, donde descubrí nuevas perspectivas sobre la educación inclusiva.</p>
+                </a>
+                <a href="lecturas-2-cuatrimestre.html" class="reading-link">
+                    <img src="libro2-1.jpeg" alt="Portada Hay un chico en el baño de las chicas">
+                    <h2>Lecturas 2º Cuatrimestre</h2>
+                    <p>Descubre mis análisis y aprendizajes de las lecturas del segundo cuatrimestre, incluyendo "Hay un chico en el baño de las chicas" y otras obras significativas.</p>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Proyecto de Educación Inclusiva © 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.href.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

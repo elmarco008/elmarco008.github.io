@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturas 1º Cuatrimestre - Educación Inclusiva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #3a5683;
+            --accent-color: #ff7e5f;
+            --accent-color-2: #feb47b;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            background-attachment: fixed;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(132,250,176,0.3) 0%, rgba(143,211,244,0.3) 100%);
+            z-index: 0;
+        }
+        
+        header h1 {
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .active {
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            min-height: calc(100vh - 250px);
+        }
+        
+        .content {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-color-2));
+            border-radius: 5px;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.8;
+        }
+        
+        .books-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+            cursor: pointer;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .book-card img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .book-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .book-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding-left: 0;
+        }
+        
+        .book-card h2::before {
+            display: none;
+        }
+        
+        .book-content {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .book-content.active {
+            display: block;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .highlight-box::before {
+            content: "\201C";
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 150px;
+            font-family: Georgia, serif;
+            color: rgba(255,255,255,0.1);
+        }
+        
+        .highlight-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reading-image {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .reading-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .reading-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .books-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content > * {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .content > *:nth-child(2) { animation-delay: 0.1s; }
+        .content > *:nth-child(3) { animation-delay: 0.2s; }
+        .content > *:nth-child(4) { animation-delay: 0.3s; }
+        .content > *:nth-child(5) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Educación Inclusiva</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Introducción</a></li>
+            <li><a href="diario.html">Diario Reflexivo</a></li>
+            <li><a href="martes.html">Martes Inclusivos</a></li>
+            <li><a href="lecturas.html" class="active">Lecturas</a></li>
+            <li><a href="videos.html">Vídeos</a></li>
+            <li><a href="sobre-mi.html">Sobre Mí</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="content">
+            <h1>Lecturas 1º Cuatrimestre</h1>
+            
+            <div class="highlight-box">
+                <p class="highlight-text">Claudia Carromero Revillas, 1º de educación primaria e infantil</p>
+            </div>
+            
+            <div class="books-section">
+                <div class="book-card" onclick="toggleContent('book1')">
+                    <img src="lectura%20primer%20cuatri%202.jpeg" alt="Portada Que será de nosotros los malos alumnos">
+                    <h2>¿Qué será de nosotros los malos alumnos?</h2>
+                    <p>Álvaro Marchesi</p>
+                </div>
+                
+                <div class="book-card" onclick="toggleContent('book2')">
+                    <img src="Lectura%20primer%20cuatri%201.jpeg" alt="Portada ¿A dónde vamos papá?">
+                    <h2>¿A dónde vamos papá?</h2>
+                    <p>Jean-Louis Fournier</p>
+                </div>
+            </div>
+            
+            <div id="book1" class="book-content">
+                <h2>¿Qué será de nosotros los malos alumnos?</h2>
+                <p>"¿Qué será de nosotros los malos alumnos?", escrito por Álvaro Marchesi, nos invita a reflexionar sobre un aspecto crucial en el sistema educativo: los estudiantes que no se ajustan a las expectativas convencionales de éxito académico. Este libro pone de relieve las dificultades y los desafíos a los que se enfrentan estos "malos alumnos", aquellos que, por diversas razones, no logran adaptarse al modelo escolar tradicional. La obra cuestiona los métodos y estructuras que los relegan y estigmatizan, y nos plantea la necesidad de un cambio en la visión de la educación y del rol del estudiante.</p>
+                
+                <p>El hecho de que el sistema educativo está diseñado bajo un modelo que no contempla las particularidades y talentos genera una sensación de exclusión en muchos alumnos que, al no destacar en áreas académicas, son etiquetados como "malos" o "incapaces". Desde esta perspectiva, el sistema educativo actúa no solo como una herramienta de enseñanza, sino también como un filtro social que define quiénes son los "buenos" y los "malos", basado en una escala de rendimiento limitada.</p>
+                
+                <p>Uno de los aspectos más destacados del análisis de Marchesi es el impacto psicológico que tiene esta categorización en los estudiantes. Al ver constantemente señaladas sus fallos, muchos jóvenes terminan creyendo que no sirven para el éxito, desarrollando una baja autoestima que los acompaña incluso en la adultez. Esto puede desencadenar un círculo vicioso, pues aquellos que sienten que no cumplen con los estándares, se desmotivan y, en lugar de mejorar, se alejan aún más.</p>
+                
+                <p>Marchesi también resalta que la educación debe enfocarse en el desarrollo del estudiante, en lugar de solo en los resultados académicos. Este planteamiento sugiere que los alumnos necesitan ser valorados por sus habilidades personales, sus talentos y sus capacidades, en lugar de ser evaluados exclusivamente con base en un sistema de notas. La educación debería promover una cultura de aprendizaje en la que se estimule la curiosidad, la creatividad y la cooperación, en lugar de la competencia y la aceptación del resto.</p>
+                
+                <p>En cuanto a las soluciones, el autor opta por una educación inclusiva que fomente el respeto a la diversidad de capacidades y ritmos de aprendizaje. Esto implicaría un cambio profundo en la estructura educativa, en la que se promuevan métodos más personalizados y menos centrados en la evaluación estandarizada. Marchesi defiende la necesidad de escuchar a los estudiantes, entender sus necesidades y construir un entorno de apoyo en el que todos puedan encontrar su lugar y desarrollarse.</p>
+                
+                <p>En conclusión, "¿Qué será de nosotros los malos alumnos?" es una obra que nos invita a reflexionar acerca del propósito de la educación. Nos recuerda que cada estudiante es una persona completa, con su propio potencial y su propio ritmo, y que un sistema educativo verdaderamente exitoso no es aquel que produce estudiantes brillantes, sino el que permite que todos, independientemente de sus habilidades académicas, se conviertan en personas plenas y seguras de sí mismas.</p>
+            </div>
+            
+            <div id="book2" class="book-content">
+                <h2>¿A dónde vamos papá?</h2>
+                <p>"¿A dónde vamos, papá?" de Jean-Louis Fournier es un libro profundo y conmovedor que cuenta la relación entre un padre y sus hijos con discapacidades intelectuales. Fournier narra su experiencia como padre de dos niños que nunca llegarán a ser autosuficientes ni a cumplir las expectativas que muchos padres tienen para sus hijos. Con un tono honesto y directo, el autor se enfrenta al dolor que implica amar a sus hijos en medio de las limitaciones que la sociedad impone.</p>
+                
+                <p>Uno de los elementos centrales es la normalización de la discapacidad y de los sentimientos que viven los padres de hijos que no cumplen con las normas de "normalidad". Fournier habla de amar profundamente a sus hijos, pero también sufrir por ellos. Esta historia es realista realista, tratando la vulnerabilidad, el cansancio y, a pesar de todo, el amor incondicional.</p>
+                
+                <p>El autor utiliza la ironía para expresar el dolor y para sobrevivir emocionalmente ante una situación que no puede cambiar. Esta ironía puede parecer dura o incluso cruel, pero también muestra el modo en que muchos padres lo enfrentan. Fournier, a través de sus comentarios sarcásticos, pone en evidencia la soledad y el aislamiento que sienten quienes viven situaciones similares, en una sociedad que rara vez está preparada para aceptar la diferencia y apoyar a los padres de niños con necesidades especiales.</p>
+                
+                <p>En este contexto, "¿A dónde vamos, papá?" se convierte en una reflexión sobre el sentido de la vida y la paternidad. Esta pregunta existencial –el "a dónde vamos"– cobra un significado profundo: no solo se refiere al destino físico, sino a la búsqueda de un propósito en una situación que parece no tener futuro. Enfrentarse a esto es un verdadero desafío.</p>
+                
+                <p>Al final, el libro nos deja una valiosa lección sobre el amor y la aceptación. Fournier descubre que su amor por sus hijos no depende de sus habilidades ni de su capacidad para "tener éxito" en la vida. Este amor es, a pesar de todo, libre de condiciones, aunque no sin dificultades. Es un amor que simplemente existe.</p>
+                
+                <p>"¿A dónde vamos, papá?" nos invita a reflexionar sobre el significado de aceptar al otro tal y como es, sin intentar moldearlo a nuestras expectativas. Nos recuerda la importancia de la empatía, de ver a las personas en su totalidad, y de reconocer que, al final, todos buscamos un lugar al que pertenecer, aunque ese lugar no siempre sea lo que habíamos imaginado.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Proyecto de Educación Inclusiva © 2025</p>
+    </footer>
+
+    <script>
+        function toggleContent(bookId) {
+            const bookContents = document.querySelectorAll('.book-content');
+            bookContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            const selectedContent = document.getElementById(bookId);
+            selectedContent.classList.add('active');
+            
+            // Scroll to the content
+            selectedContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.href.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

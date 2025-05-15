@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mí - Educación Inclusiva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #3a5683;
+            --accent-color: #ff7e5f;
+            --accent-color-2: #feb47b;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            background-attachment: fixed;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 252, 121, 0.2) 0%, rgba(150, 230, 161, 0.2) 100%);
+            z-index: 0;
+        }
+        
+        header h1 {
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .active {
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            min-height: calc(100vh - 250px);
+        }
+        
+        .content {
+            background-color: rgba(255, 255, 255, 0.92);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1::after {
+            content: "";
+            display: block;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+            margin: 0.8rem auto 0;
+            border-radius: 10px;
+        }
+        
+        /* Hexágonos para la presentación */
+        .hexagon-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .hexagon {
+            position: relative;
+            width: 220px;
+            height: 190px;
+            background: white;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .hexagon:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .hexagon i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .hexagon h3 {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Perfil */
+        .profile-card {
+            position: relative;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .profile-card::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 126, 95, 0.1), rgba(254, 180, 123, 0.1));
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+            z-index: 0;
+        }
+        
+        .profile-card::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.1), rgba(58, 86, 131, 0.1));
+            border-radius: 50%;
+            top: -70px;
+            left: -70px;
+            z-index: 0;
+        }
+        
+        .profile-image-container {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+            z-index: 1;
+        }
+        
+        .profile-image {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: rotate(-3deg);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+        
+        .profile-image-outline {
+            position: absolute;
+            width: 100%;
+            max-width: 320px;
+            height: 100%;
+            border: 3px dashed var(--accent-color);
+            border-radius: 20px;
+            top: 15px;
+            left: 15px;
+            z-index: -1;
+        }
+        
+        .profile-info {
+            flex: 2;
+            min-width: 300px;
+            z-index: 1;
+        }
+        
+        .profile-info h2 {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .profile-info h2::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+            border-radius: 10px;
+        }
+        
+        .profile-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        /* Estilo para la cita */
+        .quote-container {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 3rem;
+            border-radius: 20px;
+            color: white;
+            position: relative;
+            margin: 3rem 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .quote-container::before {
+            content: "\201C";
+            position: absolute;
+            top: -60px;
+            left: 20px;
+            font-size: 200px;
+            font-family: Georgia, serif;
+            color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .quote-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .quote-author {
+            font-weight: bold;
+            margin-top: 1.5rem;
+            text-align: right;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Acordeón de experiencias */
+        .accordion {
+            margin: 2rem 0;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .accordion-header {
+            padding: 1.2rem 1.5rem;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .accordion-header h3 {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        
+        .accordion-header i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-content {
+            background: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-content ul, 
+        .accordion-content ol {
+            padding: 0 1.5rem 1.5rem 3rem;
+        }
+        
+        .accordion-content li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .accordion-item.active .accordion-header {
+            background: linear-gradient(90deg, rgba(255, 126, 95, 0.1), rgba(254, 180, 123, 0.1));
+        }
+        
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 1rem 1.5rem;
+        }
+        
+        /* Contacto */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .contact-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card p {
+            color: #555;
+        }
+        
+        .contact-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact-card a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .hexagon {
+                width: 180px;
+                height: 160px;
+            }
+            
+            .profile-card {
+                padding: 2rem;
+                gap: 2rem;
+            }
+            
+            .contact-card {
+                min-width: 100%;
+            }
+        }
+        
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Educación Inclusiva</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Introducción</a></li>
+            <li><a href="diario.html">Diario Reflexivo</a></li>
+            <li><a href="martes.html">Martes Inclusivos</a></li>
+            <li><a href="lecturas.html">Lecturas</a></li>
+            <li><a href="videos.html">Vídeos</a></li>
+            <li><a href="sobre-mi.html" class="active">Sobre Mí</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="content">
+            <h1>Sobre Mí</h1>
+            
+            <div class="profile-card animate">
+                <div class="profile-image-container">
+                    <!-- Reemplaza la URL de abajo por tu propia foto si lo deseas -->
+                    <img src="fotoclau1.jpeg" alt="Foto de perfil" class="profile-image">
+                    <div class="profile-image-outline"></div>
+                </div>
+                <div class="profile-info">
+                    <h2>¡Hola, soy Claudia!</h2>
+                    <p>Estudiante de Educación Primaria con mención en Pedagogía Terapéutica, apasionada por la educación inclusiva y la innovación pedagógica.</p>
+                    <p>Mi viaje en la educación comenzó como una misión personal: crear espacios donde cada estudiante pueda brillar con su luz única. Creo firmemente que la diversidad enriquece nuestras aulas y que cada diferencia es una oportunidad para aprender.</p>
+                    <p>Este sitio web es mi pequeño rincón para compartir reflexiones, recursos y experiencias sobre el fascinante mundo de la educación inclusiva. ¡Te invito a explorarlo!</p>
+                </div>
+            </div>
+            
+            <div class="hexagon-container">
+                <div class="hexagon animate delay-1">
+                    <i class="fas fa-heart"></i>
+                    <h3>Pasión</h3>
+                    <p>Por la educación transformadora</p>
+                </div>
+                <div class="hexagon animate delay-2">
+                    <i class="fas fa-brain"></i>
+                    <h3>Creatividad</h3>
+                    <p>En metodologías inclusivas</p>
+                </div>
+                <div class="hexagon animate delay-3">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidad</h3>
+                    <p>Construyendo juntos</p>
+                </div>
+                <div class="hexagon animate delay-4">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovación</h3>
+                    <p>Adaptada a cada necesidad</p>
+                </div>
+            </div>
+            
+            <div class="quote-container animate delay-2">
+                <p class="quote-text">La inclusión no es un destino, sino un viaje que transforma tanto a quien enseña como a quien aprende. En cada diferencia hay un tesoro por descubrir y en cada obstáculo, una oportunidad para crecer juntos.</p>
+                <p class="quote-author">— Mi filosofía educativa</p>
+            </div>
+            
+            <h2 style="color: var(--secondary-color); margin: 3rem 0 1.5rem; font-size: 1.8rem;">Mi Recorrido</h2>
+            
+            <div class="accordion animate delay-3">
+                <div class="accordion-item active">
+                    <div class="accordion-header">
+                        <h3>Experiencia Educativa</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Prácticas en Centros Inclusivos:</strong> Experiencia directa en aulas con modelos de inclusión avanzados, donde pude observar y aplicar estrategias de atención a la diversidad.</li>
+                            <li><strong>Voluntariado en Asociaciones:</strong> Trabajo con niños y jóvenes con diversidad funcional, desarrollando actividades adaptadas que fomentan la autonomía.</li>
+                            <li><strong>Proyectos de Investigación:</strong> Participación en estudios sobre metodologías inclusivas y su impacto en el desarrollo integral de los estudiantes.</li>
+                            <li><strong>Talleres y Seminarios:</strong> Asistencia y colaboración en eventos formativos sobre educación inclusiva, neurodiversidad y diseño universal de aprendizaje.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Filosofía Educativa</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Celebración de la Diversidad:</strong> Veo cada diferencia como una riqueza que enriquece el aula, no como un problema a solucionar.</li>
+                            <li><strong>Adaptación Creativa:</strong> Creo en adaptar los métodos a las personas, no al revés, buscando siempre caminos alternativos para el aprendizaje.</li>
+                            <li><strong>Comunidad Colaborativa:</strong> La verdadera inclusión requiere la participación activa de toda la comunidad educativa: familias, docentes y alumnado.</li>
+                            <li><strong>Aprendizaje Activo:</strong> Los estudiantes construyen su conocimiento cuando participan activamente y cuando sus voces son escuchadas y valoradas.</li>
+                            <li><strong>Educación Emocional:</strong> El bienestar emocional es la base para cualquier aprendizaje significativo; sin seguridad afectiva no hay verdadera inclusión.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Objetivos Profesionales</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ol>
+                            <li>Convertirme en especialista en metodologías de educación inclusiva con enfoque en neurodiversidad.</li>
+                            <li>Desarrollar recursos educativos accesibles que faciliten la participación de todos los estudiantes.</li>
+                            <li>Colaborar con equipos multidisciplinarios para crear programas innovadores de inclusión.</li>
+                            <li>Contribuir a la investigación educativa sobre prácticas inclusivas efectivas.</li>
+                            <li>Participar en la formación de futuros docentes para sensibilizar sobre la importancia de la inclusión desde los cimientos de la práctica educativa.</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Formación Continua</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Grado en Educación Primaria</strong> con mención en Pedagogía Terapéutica (en curso)</li>
+                            <li><strong>Curso de Especialización</strong> en Diseño Universal para el Aprendizaje</li>
+                            <li><strong>Seminario</strong> sobre Intervención Educativa en Trastornos del Neurodesarrollo</li>
+                            <li><strong>Taller</strong> de Tecnologías Asistivas para la Educación Inclusiva</li>
+                            <li><strong>Formación</strong> en Metodologías Activas para Aulas Diversas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 style="color: var(--secondary-color); margin: 3rem 0 1.5rem; font-size: 1.8rem;">Contacto</h2>
+            
+            <div class="contact-container animate delay-4">
+                <div class="contact-card">
+                    <i class="far fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>La manera más directa de contactar para consultas y colaboraciones.</p>
+                    <a href="mailto:claudia@ejemplo.com">claudia@ejemplo.com</a>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <p>Conecta conmigo profesionalmente y sigamos creciendo juntos.</p>
+                    <a href="#" target="_blank">Ver Perfil</a>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fab fa-twitter"></i>
+                    <h3>Twitter</h3>
+                    <p>Sigue mis reflexiones y recursos compartidos sobre educación.</p>
+                    <a href="#" target="_blank">@claudia_edu</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Proyecto de Educación Inclusiva © 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navegación activa
+            const currentPage = window.location.href.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // Funcionalidad de acordeón
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                
+                header.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

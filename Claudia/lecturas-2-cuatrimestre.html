@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturas 2º Cuatrimestre - Educación Inclusiva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #3a5683;
+            --accent-color: #ff7e5f;
+            --accent-color-2: #feb47b;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            background-attachment: fixed;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(132,250,176,0.3) 0%, rgba(143,211,244,0.3) 100%);
+            z-index: 0;
+        }
+        
+        header h1 {
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .active {
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            min-height: calc(100vh - 250px);
+        }
+        
+        .content {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-color-2));
+            border-radius: 5px;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.8;
+        }
+        
+        .books-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+            cursor: pointer;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .book-card img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .book-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .book-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding-left: 0;
+        }
+        
+        .book-card h2::before {
+            display: none;
+        }
+        
+        .book-content {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .book-content.active {
+            display: block;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .highlight-box::before {
+            content: "\201C";
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 150px;
+            font-family: Georgia, serif;
+            color: rgba(255,255,255,0.1);
+        }
+        
+        .highlight-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .books-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content > * {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .content > *:nth-child(2) { animation-delay: 0.1s; }
+        .content > *:nth-child(3) { animation-delay: 0.2s; }
+        .content > *:nth-child(4) { animation-delay: 0.3s; }
+        .content > *:nth-child(5) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Educación Inclusiva</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Introducción</a></li>
+            <li><a href="diario.html">Diario Reflexivo</a></li>
+            <li><a href="martes.html">Martes Inclusivos</a></li>
+            <li><a href="lecturas.html" class="active">Lecturas</a></li>
+            <li><a href="videos.html">Vídeos</a></li>
+            <li><a href="sobre-mi.html">Sobre Mí</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="content">
+            <h1>Lecturas 2º Cuatrimestre</h1>
+            
+            <div class="highlight-box">
+                <p class="highlight-text">Claudia Carromero Revillas, 1º de educación primaria e infantil</p>
+            </div>
+            
+            <div class="books-section">
+                <div class="book-card" onclick="toggleContent('book2')">
+                    <img src="libro2-1.jpeg" alt="Portada Hay un chico en el baño de las chicas">
+                    <h2>Hay Un Chico En El Baño De Las Chicas</h2>
+                    <p>Louis Sachar</p>
+                </div>
+                
+                <div class="book-card" onclick="toggleContent('book1')">
+                    <img src="libro2-2.jpeg" alt="Portada El sueño de una noche de Verano">
+                    <h2>El Sueño de una Noche de Verano</h2>
+                    <p>Gerardo Echeita Sarrionandia</p>
+                </div>
+            </div>
+            
+            <div id="book1" class="book-content">
+                <h2>El Sueño de una Noche de Verano</h2>
+                <p>"El sueño de una noche de verano" de Gerardo Echeita Sarrionandia es un libro que reflexiona sobre la educación inclusiva y los desafíos que supone en el sistema educativo. A través de un enfoque crítico, el autor analiza cómo las políticas educativas, las metodologías y las actitudes sociales de los docentes influyen en la creación de escuelas inclusivas. El libro resalta la importancia de transformar y adaptar la enseñanza a todos los alumnos para fomentar así su activa participación. Y que independientemente de sus capacidades o necesidades, puedan acceder a una educación de calidad. Con la ayuda de ejemplos y propuestas, la obra invita a reflexionar acerca del papel de los docentes, las instituciones y la sociedad en la lucha por una educación más equitativa y justa.</p>
+                
+                <p>La lectura ha supuesto para mí una reflexión sobre la educación inclusiva y lo que implica dentro de un aula. A través de este libro he entendido la lucha entre el reto y el deseo por la educación inclusiva, y me ha permitido comprender mejor las barreras a las que se enfrentan los alumnos y la importancia de generar espacios donde todos puedan aprender y participar en igualdad de condiciones.</p>
+                
+                <p>Antes de leerlo, había considerado la inclusión un objetivo deseable pero complicado de llevar a la práctica. Mi pensamiento era que quienes decidían si había inclusión en el aula o no eran únicamente los docentes. Sin embargo, este libro me ha mostrado que no se trata solo de buenas intenciones, sino de un cambio de mentalidad en el sistema educativo. También he comprendido que la inclusión no beneficia únicamente a los estudiantes con necesidades especiales, sino que mejora el aprendizaje de todos al promover valores de respeto y cooperación.</p>
+                
+                <p>Entre los aprendizajes más importantes que he adquirido con esta lectura, destacaría el papel fundamental de los docentes de estar en constante cambio. Y me ha hecho también ponerme en esta situación y en que el día de mañana seré yo la que sepa daptar las metodologías, cambios, enfoques… a mis clases, a mis alumnos y, por lo tanto, a mí misma. Este libro me ha ayudado a ver que la inclusión no es solo una cuestión individual, sino que requiere compromiso a nivel social y político.</p>
+                
+                <p>La obra ofrece herramientas y estrategias para favorecer la inclusión en el aula. Me ha parecido especialmente útil la idea de diseñar actividades que permitan la participación de todos los alumnos, adaptando los recursos sin caer en la sobreprotección. También me ha hecho reflexionar sobre la importancia del trabajo colaborativo entre docentes, familias y otros profesionales.</p>
+                
+                <p>En cuanto a mi valoración personal, considero que este libro es muy enriquecedor porque ofrece una visión realista pero alcanzable de la educación inclusiva. En algunos momentos me ha parecido repetitivo e insistente en ciertas ideas, aun así, creo que el mensaje que transmite es fundamental y necesario.</p>
+                
+                <p>Recomendaría esta lectura a cualquier persona interesada en la educación, especialmente a futuros docentes. No solo ofrece conocimientos sobre inclusión, sino que también invita a reflexionar sobre nuestra responsabilidad en la transformación del sistema educativo. Es un libro que nos recuerda que la educación es un derecho de todos y que el cambio comienza en las aulas.</p>
+            </div>
+            
+            <div id="book2" class="book-content">
+                <h2>Hay Un Chico En El Baño De Las Chicas</h2>
+                <p>El libro: "Hay un chico en el baño de las chicas" de Louis Sachar es una novela que narra la historia de Bradley Chalkers, un niño de quinto de primaria que es rechazado por sus compañeros y etiquetado como "problemático" por sus profesores. Bradley tiene dificultades para socializar, miente con frecuencia y se comporta de manera agresiva, lo que lo lleva a aislarse aún más. Sin embargo, su vida comienza a cambiar con la llegada de Carla, una orientadora escolar que lo trata con respeto y confianza, ayudándolo a descubrir su amor propio y a mejorar su relación con los demás. A través de esta historia, el libro aborda temas como la autoestima, la inclusión y la importancia del apoyo emocional en el ámbito escolar.</p>
+                
+                <p>La lectura me ha resultado muy enriquecedora, ya que aborda temas fundamentales en la educación inclusiva, como la autoestima, la empatía y la importancia de un entorno escolar que fomente el bienestar de todos los alumnos. A través de la historia de Bradley Chalkers, un niño con dificultades para socializar y adaptarse a la escuela, el libro muestra cómo el apoyo adecuado puede transformar la vida de un estudiante y ayudarle a encontrar su lugar.</p>
+                
+                <p>Antes de leerlo, tenía la idea de que los niños con problemas de comportamiento simplemente necesitaban disciplina y normas más estrictas para corregir su actitud. Sin embargo, este libro me ha hecho reflexionar sobre la importancia de entender el origen de esos comportamientos. Bradley no es un "niño problemático" sin más, sino alguien que ha sido etiquetado y rechazado tantas veces que ha asumido ese papel como una forma de protegerse. Esta perspectiva me ha ayudado a cuestionar los prejuicios que muchas veces existen sobre los estudiantes que no encajan en los moldes tradicionales.</p>
+                
+                <p>Uno de los aprendizajes más importantes que he adquirido con esta lectura es la relevancia del vínculo entre los docentes y los alumnos. La llegada de Carla, la orientadora escolar, demuestra cómo una persona que escucha sin juzgar y que cree en el potencial de un niño puede marcar una diferencia enorme en su desarrollo. También me ha hecho reflexionar sobre la importancia de la paciencia y la confianza en los procesos de cambio, ya que Bradley no cambia de un día para otro, sino que su evolución es gradual y llena de altibajos.</p>
+                
+                <p>Me ha hecho pensar en la necesidad de crear un ambiente inclusivo en el aula, donde todos los niños se sientan aceptados y valorados. Y darme cuenta de que estas situaciones ocurren día a día, además de sentirme identificada con algunas de las situaciones. La forma en que Carla trabaja con Bradley es un ejemplo de cómo la educación puede ir más allá del aprendizaje de contenidos y ayudar a construir el crecimiento personal de los estudiantes.</p>
+                
+                <p>En cuanto a mi valoración personal, me ha parecido una historia muy emotiva y llena de aprendizajes. Me ha gustado especialmente cómo el autor logra que el lector empatice con Bradley, incluso en los momentos en los que se comporta de manera desafiante. También me ha admirado la paciencia y la sensibilidad de Carla, un personaje que representa lo que significa ser un buen educador. Si tuviera que señalar algo que me haya generado rechazo, quizás sería la actitud de algunos adultos en la historia, que refuerzan las etiquetas negativas en lugar de dar oportunidades para el cambio. Sin embargo, esto mismo hace que el mensaje del libro sea aún más potente.</p>
+                
+                <p>Recomendaría esta lectura sin duda, especialmente a futuros docentes y a cualquier persona interesada en la educación. Es un libro que nos recuerda la importancia de ver más allá de las apariencias y de dar segundas oportunidades. Además de ser un libro breve y fácil para que el mensaje se transmita a cuantas más personas.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Proyecto de Educación Inclusiva © 2025</p>
+    </footer>
+
+    <script>
+        function toggleContent(bookId) {
+            const bookContents = document.querySelectorAll('.book-content');
+            bookContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            const selectedContent = document.getElementById(bookId);
+            selectedContent.classList.add('active');
+            
+            // Scroll to the content
+            selectedContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.href.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
